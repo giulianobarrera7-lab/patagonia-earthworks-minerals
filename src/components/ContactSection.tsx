@@ -15,7 +15,7 @@ const ContactSection = () => {
               con soluciones personalizadas y flexibilidad operativa.
             </p>
 
-            <div className="space-y-6">
+            <div className="space-y-6 mb-10">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                   <MapPin className="w-5 h-5 text-primary" />
@@ -51,6 +51,20 @@ const ContactSection = () => {
                   </p>
                 </div>
               </div>
+            </div>
+
+            {/* Google Maps - el cliente puede reemplazar el src con su propio link de Google Maps */}
+            <div className="rounded-lg overflow-hidden border border-border h-64">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12345.0!2d-68.06!3d-38.82!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDQ5JzEyLjAiUyA2OMKwMDMnMzYuMCJX!5e0!3m2!1ses!2sar!4v1700000000000"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Ubicación AMJ Servicios"
+              />
             </div>
           </div>
 

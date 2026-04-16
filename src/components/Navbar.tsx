@@ -15,13 +15,13 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-secondary/95 backdrop-blur-md border-b border-secondary">
       <div className="container-wide flex items-center justify-between h-16 md:h-20 px-4 md:px-8">
         <a href="#inicio" className="flex items-center gap-3">
           <img src={logoAmj} alt="AMJ Servicios SAS" className="h-10 md:h-12 w-auto" />
           <div className="hidden sm:block">
-            <span className="font-heading text-lg font-bold text-foreground tracking-tight">AMJ</span>
-            <span className="font-heading text-lg font-bold text-primary tracking-tight ml-1">SERVICIOS</span>
+            <span className="font-heading text-lg font-bold text-primary tracking-tight">AMJ</span>
+            <span className="font-heading text-lg font-bold text-secondary-foreground tracking-tight ml-1">SERVICIOS</span>
           </div>
         </a>
 
@@ -30,7 +30,7 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+              className="text-sm font-medium text-secondary-foreground/70 hover:text-primary transition-colors"
             >
               {link.label}
             </a>
@@ -48,7 +48,7 @@ const Navbar = () => {
         </div>
 
         <button
-          className="lg:hidden p-2 text-foreground"
+          className="lg:hidden p-2 text-secondary-foreground"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -57,14 +57,14 @@ const Navbar = () => {
       </div>
 
       {open && (
-        <div className="lg:hidden bg-background border-t border-border animate-fade-in">
+        <div className="lg:hidden bg-secondary border-t border-secondary animate-fade-in">
           <nav className="flex flex-col px-4 py-4 gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="text-base font-medium text-foreground py-3 px-3 rounded-md hover:bg-muted transition-colors"
+                className="text-base font-medium text-secondary-foreground py-3 px-3 rounded-md hover:bg-secondary-foreground/10 transition-colors"
               >
                 {link.label}
               </a>
