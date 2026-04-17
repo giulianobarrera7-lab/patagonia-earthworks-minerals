@@ -1,17 +1,26 @@
 import excavadoraImg from "@/assets/excavadora.jpg";
 import cargadoraImg from "@/assets/cargadora.jpg";
+import retropalaImg from "@/assets/retropala.jpg";
 import camionTatuImg from "@/assets/camion-tatu.jpg";
-import motonivImg from "@/assets/motoniveladora.jpg";
 import camionBateaImg from "@/assets/camion-batea.jpg";
-import zarandaImg from "@/assets/zaranda.jpg";
+import camionSemiImg from "@/assets/camion-semi.jpg";
+import camionCarretonImg from "@/assets/camion-carreton.jpg";
+import motonivImg from "@/assets/motoniveladora.jpg";
+import topadorImg from "@/assets/topador.jpg";
+import vibroImg from "@/assets/vibro-compactador.jpg";
 
 const machinery = [
   { name: "Excavadoras", units: "12 equipos", image: excavadoraImg },
-  { name: "Palas Cargadoras", units: "2 m³ y 3 m³", image: cargadoraImg },
+  { name: "Palas Cargadoras 3 m³", units: "4 equipos", image: cargadoraImg },
+  { name: "Palas Cargadoras 2 m³", units: "4 equipos", image: cargadoraImg },
+  { name: "Retropalas", units: "4 equipos", image: retropalaImg },
+  { name: "Camiones Tatu 18 m³", units: "6 equipos", image: camionTatuImg },
+  { name: "Camiones con Batea", units: "5 equipos", image: camionBateaImg },
+  { name: "Camiones Semi", units: "4 equipos", image: camionSemiImg },
   { name: "Motoniveladoras", units: "2 equipos", image: motonivImg },
-  { name: "Camiones Tatu", units: "6 unidades - 18 m³", image: camionTatuImg },
-  { name: "Camiones con Batea", units: "5 unidades", image: camionBateaImg },
-  { name: "Zarandas", units: "Equipos especializados", image: zarandaImg },
+  { name: "Topadores", units: "2 equipos", image: topadorImg },
+  { name: "Vibro Compactadores", units: "Disponibles", image: vibroImg },
+  { name: "Camión con Carretón 4 ejes", units: "Cotización por viaje", image: camionCarretonImg },
 ];
 
 const FleetSection = () => {
@@ -24,8 +33,8 @@ const FleetSection = () => {
             Nuestra Flota
           </h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto text-lg">
-            Flota moderna y diversificada disponible para alquiler mensual. 
-            Topadores, retro-palas, vibro-compactadores, semi-remolques y carretones de 4 ejes.
+            Flota moderna y diversificada disponible para alquiler mensual,
+            preparada para responder a las exigencias de cada proyecto.
           </p>
         </div>
 
@@ -38,6 +47,8 @@ const FleetSection = () => {
                   alt={m.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
+                  width={800}
+                  height={600}
                 />
               </div>
               <div className="p-6">
