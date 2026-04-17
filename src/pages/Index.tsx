@@ -7,6 +7,7 @@ import QuarriesSection from "@/components/QuarriesSection";
 import FleetSection from "@/components/FleetSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 const Index = () => {
   return (
@@ -20,6 +21,7 @@ const Index = () => {
       <FleetSection />
       <ContactSection />
       <Footer />
+      <WhatsAppFloat />
     </div>
   );
 };
