@@ -12,9 +12,21 @@ import {
   HardHat,
   Trash2,
   ClipboardList,
+  User,
+  ListChecks,
+  Cog,
+  Users,
+  MessageSquare,
+  FileText,
 } from "lucide-react";
 import { z } from "zod";
 import { toast } from "sonner";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const SERVICES = [
   { id: "movimiento", label: "Movimiento de Suelos", icon: Mountain },
