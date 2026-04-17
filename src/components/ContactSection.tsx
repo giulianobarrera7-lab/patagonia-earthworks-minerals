@@ -266,356 +266,456 @@ const ContactSection = () => {
               Configurá tu solicitud paso a paso. Elegí servicios, equipos y personal.
             </p>
 
-            <form className="space-y-7" onSubmit={handleSubmit} noValidate>
-              {/* STEP 1 — Datos de contacto */}
-              <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center">
-                    1
-                  </span>
-                  <h4 className="font-semibold text-foreground text-sm uppercase tracking-wider">
-                    Datos de contacto
-                  </h4>
-                </div>
-                <div className="space-y-4">
-                  <div>
-                    <label
-                      htmlFor="nombre"
-                      className="text-xs font-medium text-muted-foreground mb-1.5 block"
-                    >
-                      Nombre completo
-                    </label>
-                    <input
-                      id="nombre"
-                      type="text"
-                      value={form.nombre}
-                      onChange={(e) => setForm({ ...form, nombre: e.target.value })}
-                      className="w-full border border-input rounded-md px-4 py-2.5 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
-                      placeholder="Tu nombre completo"
-                      aria-invalid={!!errors.nombre}
-                    />
-                    {errors.nombre && (
-                      <p className="text-xs text-destructive mt-1">{errors.nombre}</p>
-                    )}
-                  </div>
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="text-xs font-medium text-muted-foreground mb-1.5 block"
-                      >
-                        Email
-                      </label>
-                      <input
-                        id="email"
-                        type="email"
-                        value={form.email}
-                        onChange={(e) => setForm({ ...form, email: e.target.value })}
-                        onBlur={() => {
-                          const r = z.string().email().safeParse(form.email);
-                          setErrors((prev) => ({
-                            ...prev,
-                            email: r.success ? "" : "Email inválido",
-                          }));
-                        }}
-                        className="w-full border border-input rounded-md px-4 py-2.5 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
-                        placeholder="tu@email.com"
-                        aria-invalid={!!errors.email}
-                      />
-                      {errors.email && (
-                        <p className="text-xs text-destructive mt-1">{errors.email}</p>
-                      )}
+            <form className="space-y-4" onSubmit={handleSubmit} noValidate>
+              <Accordion
+                type="multiple"
+                defaultValue={["step-1"]}
+                className="space-y-3"
+              >
+                {/* STEP 1 — Datos de contacto */}
+                <AccordionItem
+                  value="step-1"
+                  className="border border-border rounded-lg bg-background overflow-hidden"
+                >
+                  <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-muted/50 [&[data-state=open]]:bg-muted/30">
+                    <div className="flex items-center gap-3">
+                      <span className="w-7 h-7 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center flex-shrink-0">
+                        1
+                      </span>
+                      <User className="w-4 h-4 text-primary" />
+                      <span className="font-semibold text-foreground text-sm">
+                        Datos de contacto
+                      </span>
                     </div>
-                    <div>
-                      <label
-                        htmlFor="telefono"
-                        className="text-xs font-medium text-muted-foreground mb-1.5 block"
-                      >
-                        Teléfono
-                      </label>
-                      <input
-                        id="telefono"
-                        type="tel"
-                        value={form.telefono}
-                        onChange={(e) =>
-                          setForm({ ...form, telefono: e.target.value })
-                        }
-                        className="w-full border border-input rounded-md px-4 py-2.5 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
-                        placeholder="Tu teléfono"
-                        aria-invalid={!!errors.telefono}
-                      />
-                      {errors.telefono && (
-                        <p className="text-xs text-destructive mt-1">
-                          {errors.telefono}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* STEP 2 — Servicios */}
-              <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center">
-                    2
-                  </span>
-                  <h4 className="font-semibold text-foreground text-sm uppercase tracking-wider">
-                    Servicios de interés
-                  </h4>
-                </div>
-                <div className="grid sm:grid-cols-2 gap-2">
-                  {SERVICES.map((s) => {
-                    const Icon = s.icon;
-                    const checked = form.servicios.includes(s.id);
-                    return (
-                      <label
-                        key={s.id}
-                        className={`flex items-center gap-3 border rounded-md px-3 py-2.5 cursor-pointer transition-all text-sm ${
-                          checked
-                            ? "border-primary bg-primary/5 text-foreground"
-                            : "border-input bg-background text-muted-foreground hover:border-primary/50"
-                        }`}
-                      >
+                  </AccordionTrigger>
+                  <AccordionContent className="px-4 pt-2">
+                    <div className="space-y-4">
+                      <div>
+                        <label
+                          htmlFor="nombre"
+                          className="text-xs font-medium text-muted-foreground mb-1.5 block"
+                        >
+                          Nombre completo
+                        </label>
                         <input
-                          type="checkbox"
-                          checked={checked}
-                          onChange={() => toggleService(s.id)}
-                          className="w-4 h-4 accent-primary"
+                          id="nombre"
+                          type="text"
+                          value={form.nombre}
+                          onChange={(e) =>
+                            setForm({ ...form, nombre: e.target.value })
+                          }
+                          className="w-full border border-input rounded-md px-4 py-2.5 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+                          placeholder="Tu nombre completo"
+                          aria-invalid={!!errors.nombre}
                         />
-                        <Icon
-                          className={`w-4 h-4 ${checked ? "text-primary" : ""}`}
-                        />
-                        <span className="font-medium">{s.label}</span>
-                      </label>
-                    );
-                  })}
-                </div>
-                {errors.servicios && (
-                  <p className="text-xs text-destructive mt-2">{errors.servicios}</p>
-                )}
-              </div>
-
-              {/* STEP 3 — Equipos */}
-              <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center">
-                    3
-                  </span>
-                  <h4 className="font-semibold text-foreground text-sm uppercase tracking-wider">
-                    Configurá los equipos
-                  </h4>
-                </div>
-                <div className="border border-border rounded-lg divide-y divide-border bg-background overflow-hidden">
-                  {EQUIPMENT.map((eq) => {
-                    const qty = equipos[eq.id] ?? 0;
-                    const max = eq.stock;
-                    const atMax = max !== null && qty >= max;
-                    return (
-                      <div
-                        key={eq.id}
-                        className="flex items-center justify-between gap-3 px-3 py-2.5"
-                      >
-                        <div className="flex items-center gap-3 min-w-0 flex-1">
-                          <Wrench className="w-4 h-4 text-primary flex-shrink-0" />
-                          <div className="min-w-0">
-                            <p className="text-sm font-medium text-foreground truncate">
-                              {eq.name}
-                            </p>
-                            <p className="text-[11px] text-muted-foreground">
-                              {max !== null
-                                ? `${max} disponibles`
-                                : "Disponible — consultar"}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-1 flex-shrink-0">
-                          <button
-                            type="button"
-                            onClick={() => updateEquipo(eq.id, -1)}
-                            disabled={qty === 0}
-                            className="w-8 h-8 rounded-md border border-input flex items-center justify-center text-foreground hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-                            aria-label={`Quitar ${eq.name}`}
+                        {errors.nombre && (
+                          <p className="text-xs text-destructive mt-1">
+                            {errors.nombre}
+                          </p>
+                        )}
+                      </div>
+                      <div className="grid sm:grid-cols-2 gap-4">
+                        <div>
+                          <label
+                            htmlFor="email"
+                            className="text-xs font-medium text-muted-foreground mb-1.5 block"
                           >
-                            <Minus className="w-3.5 h-3.5" />
-                          </button>
+                            Email
+                          </label>
                           <input
-                            type="number"
-                            min={0}
-                            max={max ?? 99}
-                            value={qty}
+                            id="email"
+                            type="email"
+                            value={form.email}
                             onChange={(e) =>
-                              setEquipoValue(eq.id, parseInt(e.target.value, 10))
+                              setForm({ ...form, email: e.target.value })
                             }
-                            className="w-12 h-8 text-center text-sm border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+                            onBlur={() => {
+                              const r = z
+                                .string()
+                                .email()
+                                .safeParse(form.email);
+                              setErrors((prev) => ({
+                                ...prev,
+                                email: r.success ? "" : "Email inválido",
+                              }));
+                            }}
+                            className="w-full border border-input rounded-md px-4 py-2.5 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+                            placeholder="tu@email.com"
+                            aria-invalid={!!errors.email}
                           />
-                          <button
-                            type="button"
-                            onClick={() => updateEquipo(eq.id, 1)}
-                            disabled={atMax}
-                            className="w-8 h-8 rounded-md border border-input flex items-center justify-center text-foreground hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-                            aria-label={`Agregar ${eq.name}`}
+                          {errors.email && (
+                            <p className="text-xs text-destructive mt-1">
+                              {errors.email}
+                            </p>
+                          )}
+                        </div>
+                        <div>
+                          <label
+                            htmlFor="telefono"
+                            className="text-xs font-medium text-muted-foreground mb-1.5 block"
                           >
-                            <Plus className="w-3.5 h-3.5" />
-                          </button>
+                            Teléfono
+                          </label>
+                          <input
+                            id="telefono"
+                            type="tel"
+                            value={form.telefono}
+                            onChange={(e) =>
+                              setForm({ ...form, telefono: e.target.value })
+                            }
+                            className="w-full border border-input rounded-md px-4 py-2.5 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+                            placeholder="Tu teléfono"
+                            aria-invalid={!!errors.telefono}
+                          />
+                          {errors.telefono && (
+                            <p className="text-xs text-destructive mt-1">
+                              {errors.telefono}
+                            </p>
+                          )}
                         </div>
                       </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* STEP 4 — Personal */}
-              <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center">
-                    4
-                  </span>
-                  <h4 className="font-semibold text-foreground text-sm uppercase tracking-wider">
-                    Personal adicional
-                  </h4>
-                </div>
-                <div className="flex items-center justify-between gap-3 border border-border rounded-lg px-4 py-3 bg-background">
-                  <div className="flex items-center gap-3">
-                    <HardHat className="w-5 h-5 text-primary" />
-                    <div>
-                      <p className="text-sm font-medium text-foreground">
-                        Operarios / Técnicos
-                      </p>
-                      <p className="text-[11px] text-muted-foreground">
-                        Cantidad de personas requeridas
-                      </p>
                     </div>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <button
-                      type="button"
-                      onClick={() => setPersonal((p) => Math.max(0, p - 1))}
-                      disabled={personal === 0}
-                      className="w-8 h-8 rounded-md border border-input flex items-center justify-center hover:bg-muted disabled:opacity-40 transition-colors"
-                      aria-label="Quitar persona"
-                    >
-                      <Minus className="w-3.5 h-3.5" />
-                    </button>
-                    <input
-                      type="number"
-                      min={0}
-                      max={50}
-                      value={personal}
-                      onChange={(e) =>
-                        setPersonal(
-                          Math.max(0, Math.min(50, parseInt(e.target.value, 10) || 0))
-                        )
-                      }
-                      className="w-12 h-8 text-center text-sm border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setPersonal((p) => Math.min(50, p + 1))}
-                      className="w-8 h-8 rounded-md border border-input flex items-center justify-center hover:bg-muted transition-colors"
-                      aria-label="Agregar persona"
-                    >
-                      <Plus className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-                </div>
-              </div>
+                  </AccordionContent>
+                </AccordionItem>
 
-              {/* STEP 5 — Consulta */}
-              <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center">
-                    5
-                  </span>
-                  <h4 className="font-semibold text-foreground text-sm uppercase tracking-wider">
-                    Consulta personalizada
-                  </h4>
-                </div>
-                <textarea
-                  id="mensaje"
-                  rows={4}
-                  value={form.mensaje}
-                  onChange={(e) => setForm({ ...form, mensaje: e.target.value })}
-                  className="w-full border border-input rounded-md px-4 py-3 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 resize-none"
-                  placeholder="Contanos sobre tu proyecto…"
-                  aria-invalid={!!errors.mensaje}
-                />
-                {errors.mensaje && (
-                  <p className="text-xs text-destructive mt-1">{errors.mensaje}</p>
-                )}
-              </div>
-
-              {/* STEP 6 — Resumen */}
-              <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center">
-                    6
-                  </span>
-                  <h4 className="font-semibold text-foreground text-sm uppercase tracking-wider">
-                    Resumen de tu solicitud
-                  </h4>
-                </div>
-                <div className="border border-dashed border-border rounded-lg p-4 bg-muted/40 text-sm space-y-3">
-                  {selectedServicios.length === 0 &&
-                  selectedEquipos.length === 0 &&
-                  personal === 0 ? (
-                    <div className="flex items-center gap-2 text-muted-foreground text-xs">
-                      <Trash2 className="w-3.5 h-3.5" />
-                      Aún no seleccionaste servicios ni equipos.
-                    </div>
-                  ) : (
-                    <>
-                      {selectedServicios.length > 0 && (
-                        <div>
-                          <p className="text-[11px] uppercase tracking-wider text-muted-foreground mb-1.5 font-semibold">
-                            Servicios
-                          </p>
-                          <div className="flex flex-wrap gap-1.5">
-                            {selectedServicios.map((s) => (
-                              <span
-                                key={s.id}
-                                className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-primary/10 text-primary text-xs font-medium"
-                              >
-                                <s.icon className="w-3 h-3" />
-                                {s.label}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
+                {/* STEP 2 — Servicios */}
+                <AccordionItem
+                  value="step-2"
+                  className="border border-border rounded-lg bg-background overflow-hidden"
+                >
+                  <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-muted/50 [&[data-state=open]]:bg-muted/30">
+                    <div className="flex items-center gap-3 w-full">
+                      <span className="w-7 h-7 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center flex-shrink-0">
+                        2
+                      </span>
+                      <ListChecks className="w-4 h-4 text-primary" />
+                      <span className="font-semibold text-foreground text-sm">
+                        Servicios de interés
+                      </span>
+                      {form.servicios.length > 0 && (
+                        <span className="ml-auto mr-2 text-[11px] font-semibold bg-primary/10 text-primary px-2 py-0.5 rounded-full">
+                          {form.servicios.length}
+                        </span>
                       )}
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-4 pt-2">
+                    <div className="grid sm:grid-cols-2 gap-2">
+                      {SERVICES.map((s) => {
+                        const Icon = s.icon;
+                        const checked = form.servicios.includes(s.id);
+                        return (
+                          <label
+                            key={s.id}
+                            className={`flex items-center gap-3 border rounded-md px-3 py-2.5 cursor-pointer transition-all text-sm ${
+                              checked
+                                ? "border-primary bg-primary/5 text-foreground"
+                                : "border-input bg-background text-muted-foreground hover:border-primary/50"
+                            }`}
+                          >
+                            <input
+                              type="checkbox"
+                              checked={checked}
+                              onChange={() => toggleService(s.id)}
+                              className="w-4 h-4 accent-primary"
+                            />
+                            <Icon
+                              className={`w-4 h-4 ${
+                                checked ? "text-primary" : ""
+                              }`}
+                            />
+                            <span className="font-medium">{s.label}</span>
+                          </label>
+                        );
+                      })}
+                    </div>
+                    {errors.servicios && (
+                      <p className="text-xs text-destructive mt-2">
+                        {errors.servicios}
+                      </p>
+                    )}
+                  </AccordionContent>
+                </AccordionItem>
+
+                {/* STEP 3 — Equipos */}
+                <AccordionItem
+                  value="step-3"
+                  className="border border-border rounded-lg bg-background overflow-hidden"
+                >
+                  <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-muted/50 [&[data-state=open]]:bg-muted/30">
+                    <div className="flex items-center gap-3 w-full">
+                      <span className="w-7 h-7 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center flex-shrink-0">
+                        3
+                      </span>
+                      <Cog className="w-4 h-4 text-primary" />
+                      <span className="font-semibold text-foreground text-sm">
+                        Configurá los equipos
+                      </span>
                       {selectedEquipos.length > 0 && (
-                        <div>
-                          <p className="text-[11px] uppercase tracking-wider text-muted-foreground mb-1.5 font-semibold">
-                            Equipos
-                          </p>
-                          <ul className="space-y-1">
-                            {selectedEquipos.map((e) => (
-                              <li
-                                key={e.id}
-                                className="flex justify-between text-foreground"
+                        <span className="ml-auto mr-2 text-[11px] font-semibold bg-primary/10 text-primary px-2 py-0.5 rounded-full">
+                          {selectedEquipos.reduce((a, e) => a + (e.qty ?? 0), 0)}
+                        </span>
+                      )}
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-4 pt-2">
+                    <div className="border border-border rounded-lg divide-y divide-border bg-background overflow-hidden">
+                      {EQUIPMENT.map((eq) => {
+                        const qty = equipos[eq.id] ?? 0;
+                        const max = eq.stock;
+                        const atMax = max !== null && qty >= max;
+                        return (
+                          <div
+                            key={eq.id}
+                            className="flex items-center justify-between gap-3 px-3 py-2.5"
+                          >
+                            <div className="flex items-center gap-3 min-w-0 flex-1">
+                              <Wrench className="w-4 h-4 text-primary flex-shrink-0" />
+                              <div className="min-w-0">
+                                <p className="text-sm font-medium text-foreground truncate">
+                                  {eq.name}
+                                </p>
+                                <p className="text-[11px] text-muted-foreground">
+                                  {max !== null
+                                    ? `${max} disponibles`
+                                    : "Disponible — consultar"}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-1 flex-shrink-0">
+                              <button
+                                type="button"
+                                onClick={() => updateEquipo(eq.id, -1)}
+                                disabled={qty === 0}
+                                className="w-8 h-8 rounded-md border border-input flex items-center justify-center text-foreground hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                aria-label={`Quitar ${eq.name}`}
                               >
-                                <span>{e.name}</span>
-                                <span className="font-bold text-primary">
-                                  × {e.qty}
-                                </span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
+                                <Minus className="w-3.5 h-3.5" />
+                              </button>
+                              <input
+                                type="number"
+                                min={0}
+                                max={max ?? 99}
+                                value={qty}
+                                onChange={(e) =>
+                                  setEquipoValue(
+                                    eq.id,
+                                    parseInt(e.target.value, 10),
+                                  )
+                                }
+                                className="w-12 h-8 text-center text-sm border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+                              />
+                              <button
+                                type="button"
+                                onClick={() => updateEquipo(eq.id, 1)}
+                                disabled={atMax}
+                                className="w-8 h-8 rounded-md border border-input flex items-center justify-center text-foreground hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                aria-label={`Agregar ${eq.name}`}
+                              >
+                                <Plus className="w-3.5 h-3.5" />
+                              </button>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+
+                {/* STEP 4 — Personal */}
+                <AccordionItem
+                  value="step-4"
+                  className="border border-border rounded-lg bg-background overflow-hidden"
+                >
+                  <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-muted/50 [&[data-state=open]]:bg-muted/30">
+                    <div className="flex items-center gap-3 w-full">
+                      <span className="w-7 h-7 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center flex-shrink-0">
+                        4
+                      </span>
+                      <Users className="w-4 h-4 text-primary" />
+                      <span className="font-semibold text-foreground text-sm">
+                        Personal adicional
+                      </span>
                       {personal > 0 && (
-                        <div className="flex justify-between text-foreground border-t border-border pt-2">
-                          <span className="flex items-center gap-1.5">
-                            <HardHat className="w-3.5 h-3.5 text-primary" />
-                            Personal adicional
-                          </span>
-                          <span className="font-bold text-primary">× {personal}</span>
-                        </div>
+                        <span className="ml-auto mr-2 text-[11px] font-semibold bg-primary/10 text-primary px-2 py-0.5 rounded-full">
+                          {personal}
+                        </span>
                       )}
-                    </>
-                  )}
-                </div>
-              </div>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-4 pt-2">
+                    <div className="flex items-center justify-between gap-3 border border-border rounded-lg px-4 py-3 bg-background">
+                      <div className="flex items-center gap-3">
+                        <HardHat className="w-5 h-5 text-primary" />
+                        <div>
+                          <p className="text-sm font-medium text-foreground">
+                            Operarios / Técnicos
+                          </p>
+                          <p className="text-[11px] text-muted-foreground">
+                            Cantidad de personas requeridas
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setPersonal((p) => Math.max(0, p - 1))
+                          }
+                          disabled={personal === 0}
+                          className="w-8 h-8 rounded-md border border-input flex items-center justify-center hover:bg-muted disabled:opacity-40 transition-colors"
+                          aria-label="Quitar persona"
+                        >
+                          <Minus className="w-3.5 h-3.5" />
+                        </button>
+                        <input
+                          type="number"
+                          min={0}
+                          max={50}
+                          value={personal}
+                          onChange={(e) =>
+                            setPersonal(
+                              Math.max(
+                                0,
+                                Math.min(50, parseInt(e.target.value, 10) || 0),
+                              ),
+                            )
+                          }
+                          className="w-12 h-8 text-center text-sm border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+                        />
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setPersonal((p) => Math.min(50, p + 1))
+                          }
+                          className="w-8 h-8 rounded-md border border-input flex items-center justify-center hover:bg-muted transition-colors"
+                          aria-label="Agregar persona"
+                        >
+                          <Plus className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+
+                {/* STEP 5 — Consulta */}
+                <AccordionItem
+                  value="step-5"
+                  className="border border-border rounded-lg bg-background overflow-hidden"
+                >
+                  <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-muted/50 [&[data-state=open]]:bg-muted/30">
+                    <div className="flex items-center gap-3">
+                      <span className="w-7 h-7 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center flex-shrink-0">
+                        5
+                      </span>
+                      <MessageSquare className="w-4 h-4 text-primary" />
+                      <span className="font-semibold text-foreground text-sm">
+                        Consulta personalizada
+                      </span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-4 pt-2">
+                    <textarea
+                      id="mensaje"
+                      rows={4}
+                      value={form.mensaje}
+                      onChange={(e) =>
+                        setForm({ ...form, mensaje: e.target.value })
+                      }
+                      className="w-full border border-input rounded-md px-4 py-3 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 resize-none"
+                      placeholder="Contanos sobre tu proyecto…"
+                      aria-invalid={!!errors.mensaje}
+                    />
+                    {errors.mensaje && (
+                      <p className="text-xs text-destructive mt-1">
+                        {errors.mensaje}
+                      </p>
+                    )}
+                  </AccordionContent>
+                </AccordionItem>
+
+                {/* STEP 6 — Resumen */}
+                <AccordionItem
+                  value="step-6"
+                  className="border border-border rounded-lg bg-background overflow-hidden"
+                >
+                  <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-muted/50 [&[data-state=open]]:bg-muted/30">
+                    <div className="flex items-center gap-3">
+                      <span className="w-7 h-7 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center flex-shrink-0">
+                        6
+                      </span>
+                      <FileText className="w-4 h-4 text-primary" />
+                      <span className="font-semibold text-foreground text-sm">
+                        Resumen de tu solicitud
+                      </span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-4 pt-2">
+                    <div className="border border-dashed border-border rounded-lg p-4 bg-muted/40 text-sm space-y-3">
+                      {selectedServicios.length === 0 &&
+                      selectedEquipos.length === 0 &&
+                      personal === 0 ? (
+                        <div className="flex items-center gap-2 text-muted-foreground text-xs">
+                          <Trash2 className="w-3.5 h-3.5" />
+                          Aún no seleccionaste servicios ni equipos.
+                        </div>
+                      ) : (
+                        <>
+                          {selectedServicios.length > 0 && (
+                            <div>
+                              <p className="text-[11px] uppercase tracking-wider text-muted-foreground mb-1.5 font-semibold">
+                                Servicios
+                              </p>
+                              <div className="flex flex-wrap gap-1.5">
+                                {selectedServicios.map((s) => (
+                                  <span
+                                    key={s.id}
+                                    className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-primary/10 text-primary text-xs font-medium"
+                                  >
+                                    <s.icon className="w-3 h-3" />
+                                    {s.label}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                          {selectedEquipos.length > 0 && (
+                            <div>
+                              <p className="text-[11px] uppercase tracking-wider text-muted-foreground mb-1.5 font-semibold">
+                                Equipos
+                              </p>
+                              <ul className="space-y-1">
+                                {selectedEquipos.map((e) => (
+                                  <li
+                                    key={e.id}
+                                    className="flex justify-between text-foreground"
+                                  >
+                                    <span>{e.name}</span>
+                                    <span className="font-bold text-primary">
+                                      × {e.qty}
+                                    </span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                          {personal > 0 && (
+                            <div className="flex justify-between text-foreground border-t border-border pt-2">
+                              <span className="flex items-center gap-1.5">
+                                <HardHat className="w-3.5 h-3.5 text-primary" />
+                                Personal adicional
+                              </span>
+                              <span className="font-bold text-primary">
+                                × {personal}
+                              </span>
+                            </div>
+                          )}
+                        </>
+                      )}
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
 
               <button
                 type="submit"
