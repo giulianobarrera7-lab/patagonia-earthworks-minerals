@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap');
 
 @layer base {
   :root {
@@ -128,4 +127,14 @@ html {
 
 .animate-hero-pan {
   animation: hero-pan 30s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Respect user preference to reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-pan,
+  [style*="dust-rise"],
+  [style*="shimmer-ray"] {
+    animation: none !important;
+  }
 }
