@@ -84,3 +84,48 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Dust particle animation — uses CSS custom props set via inline style */
+@keyframes dust-rise {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: var(--p-opacity, 0.2);
+  }
+  15% {
+    opacity: var(--p-opacity, 0.2);
+  }
+  80% {
+    opacity: calc(var(--p-opacity, 0.2) * 0.25);
+  }
+  100% {
+    transform: translateY(var(--p-rise, -250px)) translateX(var(--p-drift, 40px)) scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* Subtle light-ray shafts cutting through dust */
+@keyframes shimmer-ray {
+  0%, 100% {
+    opacity: 0;
+    transform: skewX(-12deg) scaleY(1);
+  }
+  40%, 60% {
+    opacity: 1;
+  }
+  50% {
+    transform: skewX(-12deg) scaleY(1.03) translateX(8px);
+  }
+}
+
+/* More cinematic hero background pan */
+@keyframes hero-pan {
+  0%   { transform: scale(1.10) translate(0%,    0%); }
+  25%  { transform: scale(1.14) translate(-1.8%, -0.6%); }
+  50%  { transform: scale(1.12) translate(-0.5%, -1.2%); }
+  75%  { transform: scale(1.14) translate(1.2%,  -0.4%); }
+  100% { transform: scale(1.10) translate(0%,    0%); }
+}
+
+.animate-hero-pan {
+  animation: hero-pan 30s ease-in-out infinite;
+}
