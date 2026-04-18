@@ -1,13 +1,14 @@
 import heroImg from "@/assets/hero-quarry.jpg";
 import { ChevronDown } from "lucide-react";
+import DustParticles from "@/components/DustParticles";
 
 const HeroSection = () => {
   const titleWords = ["Soluciones", "Integrales", "en", "Movimiento", "de", "Suelos", "y", "Canteras"];
 
   return (
     <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background image with slow zoom/pan to simulate machinery in motion */}
-      <div className="absolute inset-0 animate-slow-zoom">
+      {/* Background image with cinematic pan/zoom */}
+      <div className="absolute inset-0 animate-hero-pan">
         <img
           src={heroImg}
           alt="Cantera AMJ Servicios - Excavadoras y maquinaria pesada en operación"
@@ -16,7 +17,12 @@ const HeroSection = () => {
           height={1080}
         />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-r from-section-dark/85 via-section-dark/65 to-section-dark/40" />
+
+      {/* Dust and light-ray particle layer */}
+      <DustParticles />
+
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-section-dark/88 via-section-dark/65 to-section-dark/35" />
 
       <div className="relative z-10 container-wide px-4 md:px-8 pt-20">
         <div className="max-w-3xl">
