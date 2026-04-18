@@ -7,17 +7,25 @@ const HeroSection = () => {
 
   return (
     <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background image with cinematic pan/zoom */}
-      <div className="absolute inset-0 animate-hero-pan">
-        <img
-          src={heroImg}
-          alt="Cantera AMJ Servicios - Excavadoras y maquinaria pesada en operación"
+      {/* Video background */}
+      <div className="absolute inset-0">
+        <video
           className="w-full h-full object-cover"
-          width={1920}
-          height={1080}
-          fetchPriority="high"
-          decoding="async"
-        />
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={heroImg}
+        >
+          <source src="/Diseño sin título - Compressed with FlexClip.mp4" type="video/mp4" />
+          {/* Fallback to image if video not supported */}
+          <img
+            src={heroImg}
+            alt="Cantera AMJ Servicios - Excavadoras y maquinaria pesada en operación"
+            className="w-full h-full object-cover"
+            fetchPriority="high"
+          />
+        </video>
       </div>
 
       {/* Dust and light-ray particle layer */}
