@@ -13,7 +13,22 @@ const CTASection = () => (
         width={1920}
         height={1080}
       />
-      <div className="absolute inset-0 bg-section-dark/88" />
+      {/* Argentine flag gradient: celeste – white – celeste over the image */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `linear-gradient(to bottom,
+            rgba(116,172,223,0.55) 0%,
+            rgba(116,172,223,0.55) 33%,
+            rgba(255,255,255,0.30) 33%,
+            rgba(255,255,255,0.30) 66%,
+            rgba(116,172,223,0.55) 66%,
+            rgba(116,172,223,0.55) 100%
+          )`,
+        }}
+      />
+      {/* Dark overlay so text stays readable */}
+      <div className="absolute inset-0 bg-section-dark/60" />
     </div>
 
     <div className="relative z-10 container-wide text-center max-w-3xl mx-auto">
