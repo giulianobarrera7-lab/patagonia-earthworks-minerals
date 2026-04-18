@@ -18,7 +18,7 @@ const Navbar = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-secondary/95 backdrop-blur-md border-b border-secondary">
       <div className="container-wide flex items-center justify-between h-16 md:h-20 px-4 md:px-8">
         <a href="#inicio" className="flex items-center gap-3">
-          <img src={logoAmj} alt="AMJ Servicios SAS" className="h-10 md:h-12 w-auto" />
+          <img src={logoAmj} alt="AMJ Servicios SAS" className="h-10 md:h-12 w-auto bg-white rounded-md p-1" />
           <div className="hidden sm:block">
             <span className="font-heading text-lg font-bold text-primary tracking-tight">AMJ</span>
             <span className="font-heading text-lg font-bold text-secondary-foreground tracking-tight ml-1">SERVICIOS</span>
