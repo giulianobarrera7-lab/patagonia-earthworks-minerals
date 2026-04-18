@@ -1,19 +1,21 @@
+import { lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import ServicesSection from "@/components/ServicesSection";
-import MissionSection from "@/components/MissionSection";
-import MineralsSection from "@/components/MineralsSection";
-import QuarriesSection from "@/components/QuarriesSection";
-import FleetSection from "@/components/FleetSection";
-import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 
-const Index = () => {
-  return (
-    <div className="min-h-screen">
-      <Navbar />
-      <HeroSection />
+const MissionSection  = lazy(() => import("@/components/MissionSection"));
+const ServicesSection = lazy(() => import("@/components/ServicesSection"));
+const MineralsSection = lazy(() => import("@/components/MineralsSection"));
+const QuarriesSection = lazy(() => import("@/components/QuarriesSection"));
+const FleetSection    = lazy(() => import("@/components/FleetSection"));
+const ContactSection  = lazy(() => import("@/components/ContactSection"));
+const Footer          = lazy(() => import("@/components/Footer"));
+
+const Index = () => (
+  <div className="min-h-screen">
+    <Navbar />
+    <HeroSection />
+    <Suspense fallback={null}>
       <MissionSection />
       <ServicesSection />
       <MineralsSection />
@@ -21,9 +23,9 @@ const Index = () => {
       <FleetSection />
       <ContactSection />
       <Footer />
-      <WhatsAppFloat />
-    </div>
-  );
-};
+    </Suspense>
+    <WhatsAppFloat />
+  </div>
+);
 
 export default Index;
