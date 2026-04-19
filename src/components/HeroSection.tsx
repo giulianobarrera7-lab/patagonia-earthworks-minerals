@@ -17,8 +17,8 @@ const HeroSection = () => {
           playsInline
           preload="auto"
         >
-          <source src="/hero-video.webm" type="video/webm" />
           <source src="/hero-video.mp4" type="video/mp4" />
+          <source src="/hero-video.webm" type="video/webm" />
         </video>
       </div>
 
