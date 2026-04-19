@@ -34,7 +34,7 @@ const Index = () => {
       return () => idleWindow.cancelIdleCallback?.(idleId);
     }
 
-    const timeoutId = window.setTimeout(revealSections, 700);
+    const timeoutId = window.setTimeout(revealSections, 1800);
     return () => window.clearTimeout(timeoutId);
   }, []);
 
