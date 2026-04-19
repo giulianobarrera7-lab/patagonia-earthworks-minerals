@@ -9,12 +9,18 @@ const HeroSection = () => {
     <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Video background */}
       <div className="absolute inset-0 bg-section-dark overflow-hidden">
-        <iframe
-          className="absolute w-[500%] h-[500%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-          src="https://www.youtube.com/embed/Mg1QiBqMf7o?autoplay=1&mute=1&loop=1&playlist=Mg1QiBqMf7o&controls=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&fs=0&disablekb=1"
-          allow="autoplay; encrypted-media"
-          title="Hero background video"
-        />
+        {/* Padding-bottom hack: maintains 16:9 and centers the video to cover the full area */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          style={{ width: "max(100%, 177.78vh)", paddingBottom: "max(56.25%, 100vh)", height: 0, position: "absolute" }}
+        >
+          <iframe
+            style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", pointerEvents: "none" }}
+            src="https://www.youtube.com/embed/Mg1QiBqMf7o?autoplay=1&mute=1&loop=1&playlist=Mg1QiBqMf7o&controls=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&fs=0&disablekb=1"
+            allow="autoplay; encrypted-media"
+            title="Hero background video"
+          />
+        </div>
       </div>
 
       {/* Dust and light-ray particle layer */}
