@@ -1,11 +1,12 @@
-import heroOilgas from "@/assets/hero-oilgas.jpg";
+import ctaBg from "@/assets/cta-bg.jpg";
 import { ArrowRight, Phone } from "lucide-react";
+import AnimatedHeading from "@/components/AnimatedHeading";
 
 const CTASection = () => (
   <section className="relative py-28 px-4 overflow-hidden">
     <div className="absolute inset-0">
       <img
-        src={heroOilgas}
+        src={ctaBg}
         alt=""
         aria-hidden="true"
         className="w-full h-full object-cover"
@@ -13,32 +14,19 @@ const CTASection = () => (
         width={1920}
         height={1080}
       />
-      {/* Argentine flag gradient: celeste – white – celeste over the image */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: `linear-gradient(to bottom,
-            rgba(116,172,223,0.55) 0%,
-            rgba(116,172,223,0.55) 33%,
-            rgba(255,255,255,0.30) 33%,
-            rgba(255,255,255,0.30) 66%,
-            rgba(116,172,223,0.55) 66%,
-            rgba(116,172,223,0.55) 100%
-          )`,
-        }}
-      />
       {/* Dark overlay so text stays readable */}
-      <div className="absolute inset-0 bg-section-dark/60" />
+      <div className="absolute inset-0 bg-section-dark/70" />
     </div>
 
     <div className="relative z-10 container-wide text-center max-w-3xl mx-auto">
       <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-4">
         Trabajemos Juntos
       </p>
-      <h2 className="font-heading text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
-        ¿Tenés un proyecto?{" "}
-        <span className="text-primary">Hablemos.</span>
-      </h2>
+      <AnimatedHeading
+        text="¿Tenés un proyecto? Hablemos."
+        highlightWords={["Hablemos."]}
+        className="font-heading text-4xl md:text-6xl font-black text-white mb-6 leading-tight"
+      />
       <p className="text-white/60 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
         Cotizamos sin compromiso. Disponibilidad inmediata de maquinaria y
         personal calificado para cualquier escala de obra.

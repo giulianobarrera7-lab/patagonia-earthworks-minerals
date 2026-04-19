@@ -1,5 +1,6 @@
 import excavadoraImg from "@/assets/excavadora.jpg";
 import cargadoraImg from "@/assets/cargadora.jpg";
+import cargadora2mImg from "@/assets/cargadora-2m.jpg";
 import retropalaImg from "@/assets/retropala.jpg";
 import camionTatuImg from "@/assets/camion-tatu.jpg";
 import camionBateaImg from "@/assets/camion-batea.jpg";
@@ -8,6 +9,7 @@ import camionCarretonImg from "@/assets/camion-carreton.jpg";
 import motonivImg from "@/assets/motoniveladora.jpg";
 import topadorImg from "@/assets/topador.jpg";
 import vibroImg from "@/assets/vibro-compactador.jpg";
+import AnimatedHeading from "@/components/AnimatedHeading";
 
 type Machine = { name: string; units: string; image: string };
 type Category = { label: string; machines: Machine[] };
@@ -18,7 +20,7 @@ const CATEGORIES: Category[] = [
     machines: [
       { name: "Excavadoras",          units: "12 equipos", image: excavadoraImg },
       { name: "Palas Cargadoras 3 m³", units: "4 equipos",  image: cargadoraImg  },
-      { name: "Palas Cargadoras 2 m³", units: "4 equipos",  image: cargadoraImg  },
+      { name: "Palas Cargadoras 2 m³", units: "4 equipos",  image: cargadora2mImg },
       { name: "Retropalas",            units: "4 equipos",  image: retropalaImg  },
     ],
   },
@@ -46,9 +48,11 @@ const FleetSection = () => (
     <div className="container-wide">
       <div className="text-center mb-16">
         <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-3">Equipamiento</p>
-        <h2 className="font-heading text-3xl md:text-5xl font-bold text-foreground">
-          Nuestra Flota
-        </h2>
+        <AnimatedHeading
+          text="Nuestra Flota"
+          highlightWords={["Flota"]}
+          className="font-heading text-3xl md:text-5xl font-bold text-foreground"
+        />
         <p className="text-muted-foreground mt-4 max-w-2xl mx-auto text-lg">
           Flota moderna y diversificada disponible para alquiler mensual,
           preparada para responder a las exigencias de cada proyecto.

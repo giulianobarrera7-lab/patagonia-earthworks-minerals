@@ -1,4 +1,5 @@
 import { Truck, Mountain, Pickaxe, Package } from "lucide-react";
+import AnimatedHeading from "@/components/AnimatedHeading";
 
 const services = [
   {
@@ -32,9 +33,11 @@ const ServicesSection = () => (
     <div className="container-wide">
       <div className="text-center mb-16">
         <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-3">Qué Hacemos</p>
-        <h2 className="font-heading text-3xl md:text-5xl font-bold text-foreground">
-          Nuestros Servicios
-        </h2>
+        <AnimatedHeading
+          text="Nuestros Servicios"
+          highlightWords={["Servicios"]}
+          className="font-heading text-3xl md:text-5xl font-bold text-foreground"
+        />
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-border border border-border rounded-xl overflow-hidden">
@@ -43,7 +46,7 @@ const ServicesSection = () => (
             key={s.title}
             className="group bg-background p-8 hover:bg-primary/5 transition-all duration-300 relative overflow-hidden"
           >
-            <span className="absolute top-3 right-4 font-heading text-6xl font-black text-primary/8 select-none leading-none">
+            <span className="absolute top-3 right-4 font-heading font-black text-primary/8 select-none leading-none text-4xl">
               {s.number}
             </span>
             <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary transition-colors duration-300">

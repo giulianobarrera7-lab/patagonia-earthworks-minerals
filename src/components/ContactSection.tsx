@@ -27,6 +27,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import AnimatedHeading from "@/components/AnimatedHeading";
 
 const SERVICES = [
   { id: "movimiento", label: "Movimiento de Suelos", icon: Mountain },
@@ -175,9 +176,11 @@ const ContactSection = () => {
             <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-3">
               Contacto
             </p>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Trabajemos Juntos
-            </h2>
+            <AnimatedHeading
+              text="Trabajemos Juntos"
+              highlightWords={["Juntos"]}
+              className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-6"
+            />
             <p className="text-muted-foreground text-lg mb-10 leading-relaxed">
               Armá tu presupuesto a medida. Elegí los servicios, equipos y personal
               que necesitás para tu proyecto y te respondemos a la brevedad.
@@ -258,9 +261,12 @@ const ContactSection = () => {
               <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                 <ClipboardList className="w-5 h-5 text-primary" />
               </div>
-              <h3 className="font-heading text-2xl font-bold text-foreground">
-                Armá tu Presupuesto
-              </h3>
+              <AnimatedHeading
+                as="h3"
+                text="Armá tu Presupuesto"
+                highlightWords={["Presupuesto"]}
+                className="font-heading text-2xl font-bold text-foreground"
+              />
             </div>
             <p className="text-sm text-muted-foreground mb-6">
               Configurá tu solicitud paso a paso. Elegí servicios, equipos y personal.
