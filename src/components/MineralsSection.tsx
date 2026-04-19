@@ -1,5 +1,6 @@
 import bentonitaImg from "@/assets/bentonita.jpg";
 import diatomitaImg from "@/assets/diatomita.jpg";
+import AnimatedHeading from "@/components/AnimatedHeading";
 
 const minerals = [
   {
@@ -36,9 +37,11 @@ const MineralsSection = () => {
       <div className="container-wide">
         <div className="text-center mb-16">
           <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-3">Productos</p>
-          <h2 className="font-heading text-3xl md:text-5xl font-bold text-foreground">
-            Minerales Industriales
-          </h2>
+          <AnimatedHeading
+            text="Minerales Industriales"
+            highlightWords={["Industriales"]}
+            className="font-heading text-3xl md:text-5xl font-bold text-foreground"
+          />
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">

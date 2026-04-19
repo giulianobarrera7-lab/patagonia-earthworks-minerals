@@ -1,5 +1,6 @@
 import ctaBg from "@/assets/cta-bg.jpg";
 import { ArrowRight, Phone } from "lucide-react";
+import AnimatedHeading from "@/components/AnimatedHeading";
 
 const CTASection = () => (
   <section className="relative py-28 px-4 overflow-hidden">
@@ -21,10 +22,11 @@ const CTASection = () => (
       <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-4">
         Trabajemos Juntos
       </p>
-      <h2 className="font-heading text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
-        ¿Tenés un proyecto?{" "}
-        <span className="text-primary">Hablemos.</span>
-      </h2>
+      <AnimatedHeading
+        text="¿Tenés un proyecto? Hablemos."
+        highlightWords={["Hablemos."]}
+        className="font-heading text-4xl md:text-6xl font-black text-white mb-6 leading-tight"
+      />
       <p className="text-white/60 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
         Cotizamos sin compromiso. Disponibilidad inmediata de maquinaria y
         personal calificado para cualquier escala de obra.
