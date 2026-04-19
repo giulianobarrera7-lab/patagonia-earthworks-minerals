@@ -17,7 +17,7 @@ const HeroSection = () => {
           playsInline
           preload="metadata"
         >
-          <source src="/Diseño sin título.mp4" type="video/mp4" />
+          <source src="/hero-video.mp4" type="video/mp4" />
         </video>
       </div>
 
