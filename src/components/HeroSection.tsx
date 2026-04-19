@@ -10,8 +10,8 @@ const HeroSection = () => {
       {/* Video background */}
       <div className="absolute inset-0 bg-section-dark overflow-hidden">
         <iframe
-          className="absolute w-[300%] h-[300%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-          src="https://www.youtube.com/embed/Mg1QiBqMf7o?autoplay=1&mute=1&loop=1&playlist=Mg1QiBqMf7o&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1"
+          className="absolute w-[500%] h-[500%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+          src="https://www.youtube.com/embed/Mg1QiBqMf7o?autoplay=1&mute=1&loop=1&playlist=Mg1QiBqMf7o&controls=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&fs=0&disablekb=1"
           allow="autoplay; encrypted-media"
           title="Hero background video"
         />
