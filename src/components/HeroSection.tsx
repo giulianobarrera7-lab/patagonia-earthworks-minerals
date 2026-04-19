@@ -1,4 +1,4 @@
-import heroImg from "@/assets/hero-quarry.jpg";
+
 import { ChevronDown } from "lucide-react";
 import DustParticles from "@/components/DustParticles";
 
@@ -8,23 +8,16 @@ const HeroSection = () => {
   return (
     <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Video background */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 bg-section-dark">
         <video
           className="w-full h-full object-cover"
           autoPlay
           muted
           loop
           playsInline
-          poster={heroImg}
+          preload="auto"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
-          {/* Fallback to image if video not supported */}
-          <img
-            src={heroImg}
-            alt="Cantera AMJ Servicios - Excavadoras y maquinaria pesada en operación"
-            className="w-full h-full object-cover"
-            fetchPriority="high"
-          />
         </video>
       </div>
 
