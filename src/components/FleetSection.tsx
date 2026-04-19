@@ -1,5 +1,6 @@
 import excavadoraImg from "@/assets/excavadora.jpg";
 import cargadoraImg from "@/assets/cargadora.jpg";
+import cargadora2mImg from "@/assets/cargadora-2m.jpg";
 import retropalaImg from "@/assets/retropala.jpg";
 import camionTatuImg from "@/assets/camion-tatu.jpg";
 import camionBateaImg from "@/assets/camion-batea.jpg";
@@ -18,7 +19,7 @@ const CATEGORIES: Category[] = [
     machines: [
       { name: "Excavadoras",          units: "12 equipos", image: excavadoraImg },
       { name: "Palas Cargadoras 3 m³", units: "4 equipos",  image: cargadoraImg  },
-      { name: "Palas Cargadoras 2 m³", units: "4 equipos",  image: cargadoraImg  },
+      { name: "Palas Cargadoras 2 m³", units: "4 equipos",  image: cargadora2mImg },
       { name: "Retropalas",            units: "4 equipos",  image: retropalaImg  },
     ],
   },
