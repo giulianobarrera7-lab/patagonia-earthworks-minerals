@@ -17,7 +17,7 @@ const HeroSection = () => {
           playsInline
           poster={heroImg}
         >
-          <source src="/Diseño sin título - Compressed with FlexClip.mp4" type="video/mp4" />
+          <source src="/Diseño sin título.mp4" type="video/mp4" />
           {/* Fallback to image if video not supported */}
           <img
             src={heroImg}
