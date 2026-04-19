@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import logoAmj from "@/assets/logo-amj.jpg";
 
@@ -13,15 +13,28 @@ const navLinks = [
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-secondary/95 backdrop-blur-md border-b border-secondary">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-section-dark/85 backdrop-blur-xl border-b border-white/8 shadow-lg shadow-black/20"
+          : "bg-transparent border-b border-transparent"
+      }`}
+    >
       <div className="container-wide flex items-center justify-between h-16 md:h-20 px-4 md:px-8">
         <a href="#inicio" className="flex items-center gap-3">
           <img src={logoAmj} alt="AMJ Servicios SAS" className="h-10 md:h-12 w-auto bg-white rounded-md p-1" />
           <div className="hidden sm:block">
             <span className="font-heading text-lg font-bold text-primary tracking-tight">AMJ</span>
-            <span className="font-heading text-lg font-bold text-secondary-foreground tracking-tight ml-1">SERVICIOS</span>
+            <span className="font-heading text-lg font-bold text-white tracking-tight ml-1">SERVICIOS</span>
           </div>
         </a>
 
@@ -30,7 +43,7 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-secondary-foreground/70 hover:text-primary transition-colors"
+              className="text-sm font-medium text-white/80 hover:text-primary transition-colors"
             >
               {link.label}
             </a>
@@ -48,7 +61,7 @@ const Navbar = () => {
         </div>
 
         <button
-          className="lg:hidden p-2 text-secondary-foreground"
+          className="lg:hidden p-2 text-white"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -57,14 +70,14 @@ const Navbar = () => {
       </div>
 
       {open && (
-        <div className="lg:hidden bg-secondary border-t border-secondary animate-fade-in">
+        <div className="lg:hidden bg-section-dark/95 backdrop-blur-xl border-t border-white/10">
           <nav className="flex flex-col px-4 py-4 gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="text-base font-medium text-secondary-foreground py-3 px-3 rounded-md hover:bg-secondary-foreground/10 transition-colors"
+                className="text-base font-medium text-white/80 py-3 px-3 rounded-md hover:bg-white/10 hover:text-primary transition-colors"
               >
                 {link.label}
               </a>
