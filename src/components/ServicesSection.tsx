@@ -43,7 +43,7 @@ const ServicesSection = () => (
             key={s.title}
             className="group bg-background p-8 hover:bg-primary/5 transition-all duration-300 relative overflow-hidden"
           >
-            <span className="absolute top-3 right-4 font-heading text-6xl font-black text-primary/8 select-none leading-none">
+            <span className="absolute top-3 right-4 font-heading font-black text-primary/8 select-none leading-none text-4xl">
               {s.number}
             </span>
             <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary transition-colors duration-300">
