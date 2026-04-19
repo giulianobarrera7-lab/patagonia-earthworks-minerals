@@ -1,4 +1,5 @@
 import { MapPin } from "lucide-react";
+import AnimatedHeading from "@/components/AnimatedHeading";
 
 const quarries = [
   {
@@ -24,9 +25,11 @@ const QuarriesSection = () => {
       <div className="container-wide">
         <div className="text-center mb-16">
           <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-3">Red de Canteras</p>
-          <h2 className="font-heading text-3xl md:text-5xl font-bold text-section-dark-foreground">
-            Calidad desde el Origen
-          </h2>
+          <AnimatedHeading
+            text="Calidad desde el Origen"
+            highlightWords={["Origen"]}
+            className="font-heading text-3xl md:text-5xl font-bold text-section-dark-foreground"
+          />
           <p className="text-section-dark-foreground/70 mt-4 max-w-2xl mx-auto text-lg">
             Contamos con canteras propias estratégicamente ubicadas en Río Negro y La Pampa 
             para garantizar el abastecimiento constante de materiales de primera línea.
