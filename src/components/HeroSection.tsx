@@ -1,4 +1,4 @@
-import heroImg from "@/assets/hero-quarry.jpg";
+
 import { ChevronDown } from "lucide-react";
 import DustParticles from "@/components/DustParticles";
 
