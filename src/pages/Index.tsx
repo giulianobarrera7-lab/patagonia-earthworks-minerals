@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import StatsBar from "@/components/StatsBar";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import Reveal from "@/components/Reveal";
 
 const MissionSection  = lazy(() => import("@/components/MissionSection"));
 const ServicesSection = lazy(() => import("@/components/ServicesSection"));
@@ -45,13 +46,13 @@ const Index = () => {
       <StatsBar />
       {showDeferredSections && (
         <Suspense fallback={null}>
-          <MissionSection />
-          <ServicesSection />
-          <MineralsSection />
-          <QuarriesSection />
-          <FleetSection />
-          <CTASection />
-          <ContactSection />
+          <Reveal><MissionSection /></Reveal>
+          <Reveal delay={50}><ServicesSection /></Reveal>
+          <Reveal delay={50}><MineralsSection /></Reveal>
+          <Reveal delay={50}><QuarriesSection /></Reveal>
+          <Reveal delay={50}><FleetSection /></Reveal>
+          <Reveal delay={50}><CTASection /></Reveal>
+          <Reveal delay={50}><ContactSection /></Reveal>
           <Footer />
         </Suspense>
       )}

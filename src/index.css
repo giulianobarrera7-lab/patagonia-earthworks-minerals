@@ -130,11 +130,44 @@ html {
   will-change: transform;
 }
 
+/* Hero block fade-up — replaces word-by-word pop */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.72s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Scroll reveal */
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-hidden.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Respect user preference to reduce motion */
 @media (prefers-reduced-motion: reduce) {
   .animate-hero-pan,
+  .animate-fade-up,
+  .reveal-hidden,
   [style*="dust-rise"],
   [style*="shimmer-ray"] {
     animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
